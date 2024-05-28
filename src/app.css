@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.heading {
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .jetbrains {
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+  .goldman-regular {
+    font-family: "Goldman", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .goldman-bold {
+    font-family: "Goldman", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .pager
+  {
+    height: 100vh;
+    width: 100vw;
+  }
