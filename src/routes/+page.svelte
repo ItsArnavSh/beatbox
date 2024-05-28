@@ -31,7 +31,7 @@
 </style>
 <script>
     import { goto } from '$app/navigation'
-    import { audioContext, analyser, source, file } from './audio.js';
+    import { audioContext, analyser, source, file ,buffer} from './audio.js';
 
   function handleFileInput(event) {
     const selectedFile = event.target.files[0];
@@ -43,21 +43,22 @@
   }
 
   function processAudioFile(selectedFile) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const arrayBuffer = event.target.result;
-      const context = new (window.AudioContext || window.webkitAudioContext)();
-      audioContext.set(context);
-      context.decodeAudioData(arrayBuffer, function(buffer) {
-        const audioAnalyser = context.createAnalyser();
-        const audioSource = context.createBufferSource();
-        audioSource.buffer = buffer;
-        audioSource.connect(audioAnalyser);
-        audioAnalyser.connect(context.destination);
-        source.set(audioSource);
-        analyser.set(audioAnalyser);
-      });
-    };
-    reader.readAsArrayBuffer(selectedFile);
-  }
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const arrayBuffer = event.target.result;
+            const context = new (window.AudioContext || window.webkitAudioContext)();
+            audioContext.set(context);
+            context.decodeAudioData(arrayBuffer, function(decodedBuffer) {
+                const audioAnalyser = context.createAnalyser();
+                const audioSource = context.createBufferSource();
+                audioSource.buffer = decodedBuffer;
+                audioSource.connect(audioAnalyser);
+                audioAnalyser.connect(context.destination);
+                source.set(audioSource);
+                analyser.set(audioAnalyser);
+                buffer.set(decodedBuffer);  // Update the buffer store
+            });
+        };
+        reader.readAsArrayBuffer(selectedFile);
+    }
 </script>
