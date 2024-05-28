@@ -3,6 +3,8 @@
   import { audioContext, analyser, source, file } from '../audio.js'; // Ensure the correct path
   import { get } from 'svelte/store';
   import {beatTimeStamps} from '../beats.js'
+  import { goto } from '$app/navigation';
+
   let info = "Start"
   let canvas;
   let ctx;
@@ -41,6 +43,7 @@
         audioSource.onended = () => {
           beatTimeStamps.set(tapTimestamps);
           isPlaying = false;
+          goto('/wait')
         };
 
         setupCanvas();

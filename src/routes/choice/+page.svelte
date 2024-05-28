@@ -59,6 +59,8 @@
         const decodedBuffer = get(buffer); // Access the buffer store's value
         if (decodedBuffer) {
             beatTimeStamps.set(detectBeats(decodedBuffer, threshold, separation));
+            goto('/wait');
+
         } else {
             console.error('Buffer is not set');
         }
