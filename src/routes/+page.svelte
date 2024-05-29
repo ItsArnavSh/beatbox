@@ -1,6 +1,6 @@
-<div class = "bg-[#DD8B3F] pager flex flex-col items-center ">
+<div class = "main pager flex flex-col items-center ">
     <div class = "h-[100px]"></div>
-    <h1 class = "text-white goldman-bold text-[150px]">Beat-Box</h1>
+    <h1 class = "text-white goldman-bold text-[150px]"><span class = "text-black">Beat</span><span class="white">-</span><span class="text-[#DD8B3F]">Box</span><span class="text-black">I</span></h1>
     <p class = "text-white goldman-regular p-0 text-4xl">watch your favorite music come to life</p>
     <div class = "h-[200px]"></div>
     <button class="custom-button text-3xl p-5 rounded-md goldman-regular">Upload Your Music</button>
@@ -27,6 +27,10 @@
     cursor: pointer;
     text-align: center;
   }
+  .main
+    {
+        background: linear-gradient(to right,#DD8B3F 50%,#000000 50%)   
+    }
 
 </style>
 <script>

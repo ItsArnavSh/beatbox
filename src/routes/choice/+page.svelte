@@ -1,5 +1,5 @@
-<div class = "bg-[#4C9AAB] pager flex flex-col items-center ">
-    <h1 class = "text-white goldman-bold text-[150px]">Beat-Box</h1>
+<div class = "pager main flex flex-col items-center ">
+    <h1 class = " goldman-bold text-[150px]"><span class="text-white">Beat</span><span class="text-[#DD8B3F]">-</span><span class="text-black">Box</span><span class="text-white">I</span></h1>
     <div class = "h-[100px]"></div>
 <div class="choice w-full items-center flex flex-row">
     <div class="c1 w-[50%] items-center flex flex-col">
@@ -7,13 +7,13 @@
         <p class = "jetbrains text-2xl text-white text-center mt-20">You have to click on the screen<br>
             whenever there is a beat with the Music Playing</p>
             <div class = "h-[100px]"></div>
-        <button class = "rounded-md bg-white text-[#4C9AAB] goldman-regular p-5 text-5xl" on:click={viber}>Begin</button>
+        <button class = "rounded-md bg-white text-black goldman-regular p-5 text-5xl" on:click={viber}>Begin</button>
     </div>
     <div class = "c2 w-[50%] items-center flex flex-col">
-        <h1 class = "text-white jetbrains text-[80px]">The Beat Tracker</h1>
-        <p class = "jetbrains text-2xl text-white text-center mt-20">The computer automatically generates beat time stamps,<br>
+        <h1 class = "text-black jetbrains text-[80px]">The Beat Tracker</h1>
+        <p class = "jetbrains text-2xl text-black text-center mt-20">The computer automatically generates beat time stamps,<br>
             Although not very accurate</p>
-        <div class = "h-[100px]"></div><select id="genre" class="p-5 ">
+        <div class = "h-[10px]"></div><select id="genre" class="p-5 ">
     <option value="pop">Pop</option>
     <option value="rock">Rock</option>
     <option value="edm">EDM</option>
@@ -30,7 +30,7 @@
             <option value="jazz">Jazz</option>
             <option value="classical">Classical</option>
         </select>
-        <button class = "rounded-md bg-white text-[#4C9AAB] goldman-regular p-5 text-5xl" on:click = {automatic}>Start</button>
+        <button class = "rounded-md bg-black text-white goldman-regular p-5 text-5xl" on:click = {automatic}>Start</button>
     </div>
 </div>
 </div>
@@ -83,3 +83,9 @@
         return beatTimestamps;
     }
 </script>
+<style>
+.main
+{
+    background: linear-gradient(to right, black 50%,white 50%);
+}
+</style>
