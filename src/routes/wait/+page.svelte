@@ -2,20 +2,16 @@
     import { onMount, onDestroy } from 'svelte';
     import { get } from 'svelte/store';
     import { audioContext, source, buffer, analyser } from '../audio';
-
-    let canvas;
-    let canvasContext;
+    import {simulation} from '../simulation'
+    import { goto } from '$app/navigation'
+import {width,height} from '../canvas'
     let processing = true;
     let animationId;
-
+    width.set(1600);
+      height.set(1000);
+      
     // Mock long-running function
-    function mockProcessing() {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, 5000); // Mocking a 5 second processing time
-        });
-    }
+    simulation.begin();
 
     // Starts the audio and visualizer when the component is mounted
     onMount(async () => {
@@ -28,10 +24,9 @@
             source.set(audioSource);
             audioSource.start(0);
 
-            await mockProcessing();
+            await simulation.begin();
             processing = false;
 
-            drawVisualizer();
         }
     });
 
@@ -41,43 +36,9 @@
         if (audioSource) {
             audioSource.stop();
         }
+        goto('../simulation')
     }
 
-    // Function to draw the visualizer
-    function drawVisualizer() {
-        if (!canvasContext) {
-            canvasContext = canvas.getContext('2d');
-        }
-
-        const context = get(audioContext);
-        const audioAnalyser = get(analyser);
-        audioAnalyser.fftSize = 256;
-        const bufferLength = audioAnalyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-
-        function draw() {
-            audioAnalyser.getByteFrequencyData(dataArray);
-
-            canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-
-            const barWidth = (canvas.width / bufferLength) * 2.5;
-            let barHeight;
-            let x = 0;
-
-            for (let i = 0; i < bufferLength; i++) {
-                barHeight = dataArray[i];
-
-                canvasContext.fillStyle = '#DD8B3F';
-                canvasContext.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight / 2);
-
-                x += barWidth + 1;
-            }
-
-            animationId = requestAnimationFrame(draw);
-        }
-
-        draw();
-    }
 
     // Cleanup function
     onDestroy(() => {
@@ -107,7 +68,7 @@
             </div>   
         {/if}
     </div>
-    <canvas bind:this={canvas} width="800" height="400"></canvas>
+
 </main>
 
 <style>
@@ -136,7 +97,5 @@
     }
 
 
-    canvas {
-        z-index: -1;
-    }
+
 </style>
