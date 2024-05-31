@@ -3,15 +3,15 @@
     <div class = "h-[100px]"></div>
 <div class="choice w-full items-center flex flex-row">
     <div class="c1 w-[50%] items-center flex flex-col">
-        <h1 class = "text-white jetbrains text-[80px]">The Beat Viber</h1>
-        <p class = "jetbrains text-2xl text-white text-center mt-20">You have to click on the screen<br>
+        <h1 class = "text-white jetbrains text-[50px]">The Beat Viber</h1>
+        <p class = "jetbrains text-xl text-white text-center mt-20">You have to click on the screen<br>
             whenever there is a beat with the Music Playing</p>
             <div class = "h-[100px]"></div>
         <button class = "rounded-md bg-white text-black goldman-regular p-5 text-5xl" on:click={viber}>Begin</button>
     </div>
     <div class = "c2 w-[50%] items-center flex flex-col">
-        <h1 class = "text-black jetbrains text-[80px]">The Beat Tracker</h1>
-        <p class = "jetbrains text-2xl text-black text-center mt-20">The computer automatically generates beat time stamps,<br>
+        <h1 class = "text-black jetbrains text-[50px]">The Beat Tracker</h1>
+        <p class = "jetbrains text-xl text-black text-center mt-20">The computer automatically generates beat time stamps,<br>
             Although not very accurate</p>
         <div class = "h-[10px]"></div><select id="genre" class="p-5 ">
             <option value = "Select">Select</option>
