@@ -48,7 +48,7 @@
         };
         
         const genreSelect = document.getElementById('genre');
-        genre = genreSelect.value;
+        let genre = genreSelect.value;
         const { threshold, separation } = genrePresets[genre];
         const decodedBuffer = get(buffer); // Access the buffer store's value
         if (decodedBuffer) {
