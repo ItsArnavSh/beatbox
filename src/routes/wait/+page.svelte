@@ -4,14 +4,9 @@
     import { audioContext, source, buffer, analyser } from '../audio';
     import {simulation} from '../simulation'
     import { goto } from '$app/navigation'
-import {width,height} from '../canvas'
     let processing = true;
     let animationId;
-    width.set(1600);
-      height.set(1000);
       
-    // Mock long-running function
-    simulation.begin();
 
     // Starts the audio and visualizer when the component is mounted
     onMount(async () => {

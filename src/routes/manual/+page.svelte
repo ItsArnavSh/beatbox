@@ -9,7 +9,7 @@
   let canvas;
   let ctx;
   let isPlaying = false;
-  let tapTimestamps = [];
+  let tapTimestamps = [0];
   let startTime;
   let countdown = 3;
   let showCountdown = false;

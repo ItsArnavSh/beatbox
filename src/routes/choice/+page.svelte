@@ -14,6 +14,7 @@
         <p class = "jetbrains text-2xl text-black text-center mt-20">The computer automatically generates beat time stamps,<br>
             Although not very accurate</p>
         <div class = "h-[10px]"></div><select id="genre" class="p-5 ">
+            <option value = "Select">Select</option>
     <option value="pop">Pop</option>
     <option value="rock">Rock</option>
     <option value="edm">EDM</option>
@@ -21,15 +22,7 @@
     <option value="jazz">Jazz</option>
     <option value="classical">Classical</option>
 </select>
-        <input type="file" id="audiofile" accept="audio/*" class="hidden">
-        <select id="genre" class="hidden">
-            <option value="pop">Pop</option>
-            <option value="rock">Rock</option>
-            <option value="edm">EDM</option>
-            <option value="hiphop">Hip-Hop</option>
-            <option value="jazz">Jazz</option>
-            <option value="classical">Classical</option>
-        </select>
+
         <button class = "rounded-md bg-black text-white goldman-regular p-5 text-5xl" on:click = {automatic}>Start</button>
     </div>
 </div>
@@ -53,8 +46,9 @@
             'jazz': { threshold: 0.9, separation: 0.35 },
             'classical': { threshold: 0.95, separation: 0.5 },
         };
+        
         const genreSelect = document.getElementById('genre');
-        const genre = genreSelect.value;
+        genre = genreSelect.value;
         const { threshold, separation } = genrePresets[genre];
         const decodedBuffer = get(buffer); // Access the buffer store's value
         if (decodedBuffer) {
@@ -70,7 +64,7 @@
         const sampleRate = decodedBuffer.sampleRate;
         const data = decodedBuffer.getChannelData(0); // assuming mono audio
         const dataLength = data.length;
-        let beatTimestamps = [];
+        let beatTimestamps = [0];
         let lastBeat = -Infinity;
 
         for (let i = 0; i < dataLength; i++) {
